@@ -1,0 +1,30 @@
+{
+  "name": "midesctop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "window": {
+    "title": "",
+    "icon": "",
+    "toolbar": false,
+    "frame": true,
+    "width": 400,
+    "height": 400,
+    "position": "center",
+    "resize":false
+    // "min_width": 400,
+    // "min_height": 200,
+    // "max_width": 800,
+    // "max_height": 600
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "latest",
+    "handlebar": "latest"
+  }
+}
