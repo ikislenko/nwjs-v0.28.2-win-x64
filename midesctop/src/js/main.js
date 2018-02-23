@@ -8,21 +8,19 @@ const Context = {
     }
 };
 
-const matrix = [
+const Matrix = [
     [0, 0, 0],
     [1, 1, 1],
     [0, 1, 0],
 ];
 
-const player = {
+const Player = {
     pos: {
         x: 5,
         y: 5
     },
-    matrix: matrix
+    matrix: Matrix
 }
-
-
 
 function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
@@ -41,8 +39,25 @@ function draw() {
     Context.context.fillStyle = "#000";
     Context.context.fillRect(0, 0, Context.canvas.width, Context.canvas.height);
 
-    drawFigure(player.matrix, player.pos);
+    drawMatrix(Player.matrix, Player.pos);
 }
+
+let lastTime = 0;
+let dropCounter = 0;
+let dropInterval = 1000;
+
+function update(time = 0) {
+    const deltaTime = time - lastTime;
+    lastTime = time;
+    dropCounter += deltaTime;
+    if (dropCounter > dropInterval) {
+        Player.pos.y++;
+        dropCounter = 0;
+    }
+    draw();
+    requestAnimationFrame(update);
+}
+
 
 (function() {
     // Initialize
@@ -50,5 +65,25 @@ function draw() {
     // Context.context.beginPath();
     Context.context.scale(20, 20);
 
-    draw();
+    update();
+
+    document.addEventListener("keydown", event => {
+        console.log(event)
+
+        if (event.keyCode == 37) {
+            Player.pos.x--;
+        }
+
+        if (event.keyCode == 39) {
+            Player.pos.x++;
+        }
+
+        // if (event.keyCode == 37) {
+
+        // }
+
+        // if (event.keyCode == 37) {
+
+        // }
+    });
 })();
