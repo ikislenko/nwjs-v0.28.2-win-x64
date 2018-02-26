@@ -11,14 +11,10 @@
     "icon": "",
     "toolbar": false,
     "frame": true,
-    "width": 400,
-    "height": 400,
+    "width": 800,
+    "height": 600,
     "position": "center",
     "resize":false
-    // "min_width": 400,
-    // "min_height": 200,
-    // "max_width": 800,
-    // "max_height": 600
   },
   "keywords": [],
   "author": "",
