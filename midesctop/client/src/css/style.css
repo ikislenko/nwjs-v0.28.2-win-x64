@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* align-content: center; */
+    background-image: url("../img/cool-background.jpg") ;
+    background-repeat: no-repeat;
+    background-size: 900px 600px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 2em;
+    text-align: center;
+    width: 900px;
+    height: 500px;
+    display: flex;
+    flex: auto;
+}
+.player {
+    flex: 1 1 auto;
+}
+/* .player .player-info {
+    position: relative;
+    width: 240px;
+    height: 150px;
+    background: inherit;
+    border-radius: 2px;
+    overflow: hidden;
+    z-index: -2;
+    margin: auto;
+} */
+
+/* .player .player-info:before {
+    content: '';
+    width: 240px;
+    height: 150px;
+    background: inherit;
+    position: absolute;
+    left: -1px;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.player .player-info .info-content {
+    width: 240px;
+    z-index: 999;
+    font-size: 18px;
+} */
+
+canvas {
+    border: solid .2em #79a2ac;
+    margin: 5px;
+}
+
+/* .player .player-info .info-content .score {
+    height: 50px;
+    width: 150px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 2em;
+} */

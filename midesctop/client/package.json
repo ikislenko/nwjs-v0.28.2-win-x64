@@ -11,16 +11,20 @@
     "icon": "",
     "toolbar": false,
     "frame": true,
-    "width": 800,
-    "height": 600,
-    "position": "center",
-    "resize":false
+    "width": 900,
+    "height": 550,
+    "min_width": 900,
+    "min_height": 550,
+    "max_width": 900,
+    "max_height": 550,
+    "position": "center"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "handlebar": "latest",
     "moment": "latest",
-    "handlebar": "latest"
+    "ws": "^4.1.0"
   }
 }
