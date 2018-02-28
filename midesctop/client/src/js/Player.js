@@ -1,7 +1,8 @@
 class Player {
     constructor(tetris) {
         this.tetris = tetris;
-        this.arena = tetris.arena;
+        this.arena = this.tetris.arena;
+        this.events = new Events();
         this.dropCounter = 0;
         this.dropInterval = 1000;
         this.pos = { x: 0, y: 0 };
@@ -14,7 +15,9 @@ class Player {
         this.pos.x += dir;
         if (this.arena.collide(this)) {
             this.pos.x -= dir;
+            return;
         }
+        this.events.emit("pos", this.pos);
     }
 
     reset() {
@@ -28,8 +31,11 @@ class Player {
         if (this.arena.collide(this)) {
             this.arena.clear();
             this.score = 0;
-            this.tetris.updateScore(this.score);
+            this.events.emit("score", this.score);
         }
+
+        this.events.emit("pos", this.pos);
+        this.events.emit("matrix", this.matrix);
     }
 
     rotate(dir) {
@@ -46,6 +52,7 @@ class Player {
                 return;
             }
         }
+        this.events.emit("matrix", this.matrix);
     }
     _rotateMatrix(matrix, dir) {
         for (let y = 0; y < matrix.length; ++y) {
@@ -69,14 +76,18 @@ class Player {
 
     drop() {
         this.pos.y++;
+        this.dropCounter = 0;
+        
         if (this.arena.collide(this)) {
             this.pos.y--;
             this.arena.merge(this);
             this.reset();
             this.score += this.arena.sweep();
-            this.tetris.updateScore(this.score);
+            this.events.emit("score", this.score);
+            return;
         }
-        this.dropCounter = 0;
+
+        this.events.emit("pos", this.pos);
     }
 
     createPiece(type) {

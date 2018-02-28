@@ -6,6 +6,11 @@ class Tetris {
         this.context.scale(20, 20);
         this.arena = new Arena(12, 20);
         this.player = new Player(this);
+    
+        this.player.events.listen("score", score => {
+            this.updateScore(score);
+        });
+
         this.colors = [
             null,
             "red",
@@ -19,15 +24,14 @@ class Tetris {
 
         let lastTime = 0;
         
-        const update = (time = 0) => {
+        this._update = (time = 0) => {
             const deltaTime = time - lastTime;
             lastTime = time;
             this.player.update(deltaTime);
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.draw();
-            requestAnimationFrame(update);
+            requestAnimationFrame(this._update);
         }
-
-        update();
     }
 
     _drawMatrix(matrix, offset) {
@@ -42,14 +46,38 @@ class Tetris {
                 }
             });
         });
-
     }
 
     draw() {
-        this.context.fillStyle = "rgba(0, 0, 0, 0.2)";
+        this.context.fillStyle = "rgba(0,0,0,0)";
         this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
         this._drawMatrix(this.arena.matrix, { x: 0, y: 0 });
         this._drawMatrix(this.player.matrix, this.player.pos);
+    }
+
+    run() {
+        this._update();
+    }
+
+    serialize() {
+        return {
+            arena: {
+                matrix: this.arena.matrix,
+            },
+            player: {
+                matrix: this.player.matrix,
+                pos: this.player.pos,
+                score: this.player.score
+            },
+        }
+    }
+
+    unserialize(state) {
+        this.arena = Object.assign(state.arena);
+        this.player = Object.assign(state.player);
+        this.updateScore(this.player.score);
+        this.draw();
     }
 
     updateScore(score) {

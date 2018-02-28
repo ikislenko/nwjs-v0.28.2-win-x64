@@ -2,22 +2,9 @@
   "name": "midesctop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "window": {
-    "title": "",
-    "icon": "",
-    "toolbar": false,
-    "frame": true,
-    "width": 900,
-    "height": 550,
-    "min_width": 900,
-    "min_height": 550,
-    "max_width": 900,
-    "max_height": 550,
-    "position": "center"
+    "start": "electron ."
   },
   "keywords": [],
   "author": "",
@@ -25,6 +12,11 @@
   "dependencies": {
     "handlebar": "latest",
     "moment": "latest",
+    "node-webkit-updater": "^0.3.3",
     "ws": "^4.1.0"
+  },
+  "devDependencies": {
+    "electron": "^1.8.2",
+    "electron-prebuilt": "^1.4.13"
   }
 }

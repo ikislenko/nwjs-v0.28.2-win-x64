@@ -1,0 +1,31 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /* align-content: center; */
+    background-image: url("../img/cool-background.jpg") ;
+    background-repeat: no-repeat;
+    background-size: 900px 600px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 2em;
+    text-align: center;
+    width: 900px;
+    height: 500px;
+    display: flex;
+    flex: auto;
+}
+.player {
+    flex: 1 1 auto;
+}
+
+.player.local canvas {
+    border-color: #fff;
+}
+
+canvas {
+    border: solid .2em #79a2ac;
+    margin: 5px;
+}
