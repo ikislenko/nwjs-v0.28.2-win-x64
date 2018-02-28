@@ -28,7 +28,7 @@ class Tetris {
             const deltaTime = time - lastTime;
             lastTime = time;
             this.player.update(deltaTime);
-            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            
             this.draw();
             requestAnimationFrame(this._update);
         }
@@ -49,6 +49,7 @@ class Tetris {
     }
 
     draw() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.context.fillStyle = "rgba(0,0,0,0)";
         this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
